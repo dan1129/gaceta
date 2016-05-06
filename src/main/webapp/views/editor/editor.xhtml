@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Edición</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <h:form>
+                <pe:layout maskPanesEarly="true">
+                    <pe:layoutPane position="north" 
+                                    size="160"
+                                    closable="false"
+                                    resizable="false"> 
+                        
+                        <h:graphicImage value="../../resources/img/enc.jpg" 
+                                          height="75px" 
+                                          width="210px"/>
+                        <p:separator/>
+                        
+                        <p:menubar >
+                                <p:menuitem value="EDITOR" outcome="editor.xhtml" icon="" />
+                                <f:facet name="options" >
+                                    <!--<p:inputText valueChangeListener="Edición"/>--> 
+                                    <p:inputText style="margin-right:10px" placeholder="Buscar"/>
+                                    <p:commandButton icon="ui-icon-mail-closed" title="Notificaciones" />
+                                    <p:commandButton actionListener="#{sesionController.cerrarSesion()}" icon="ui-icon-power" title="Cerrar Sesión" action="/index"/>
+                                </f:facet>       
+                        </p:menubar> 
+                    </pe:layoutPane> 
+                    
+                    <pe:layoutPane position="west" 
+                                   size="250" 
+                                   resizeWhileDragging="false"  
+                                   maxSize="500" 
+                                   minSize="100" 
+                                   resizable="false" 
+                                   closable="true">
+                        
+                        <p:button value="REDACTAR" 
+                                   style="background-color:rgb(109, 26, 66) !important; 
+                                          font-size: 19px !important; 
+                                          color: white !important;
+                                          margin-left: 40px !important;
+                                          margin-top: 15px !important" 
+                                  target="central" 
+                                  outcome="Redactar.xhtml" >                     
+                        </p:button>
+                        
+                        <p:menu style="width: 145px !important; 
+                                        background-color: white !important; 
+                                        border-style: none !important;">                  
+                            <p:menuitem 
+                                style="color: rgb(109, 26, 66) !important; 
+                                       font-weight: bold !important; 
+                                       font-size: 20px !important;
+                                       margin-left: 40px !important;
+                                       margin-top: 10px !important" 
+                                 value="Publicados" 
+                                 url="Publicados.xhtml" 
+                                 icon="ui-icon-print"
+                                 target="central"/>
+                            <p:menuitem 
+                                style="color: rgb(109, 26, 66) !important; 
+                                       font-weight: bold !important; 
+                                       font-size: 20px !important;
+                                       margin-left: 40px !important;" 
+                                value="Borradores" 
+                                outcome="Borradores.xhtml" 
+                                icon="ui-icon-document"
+                                target="central"/>
+                            <p:menuitem 
+                                style="color: rgb(109, 26, 66) !important; 
+                                       font-weight: bold !important; 
+                                       font-size: 20px !important;
+                                       margin-left: 40px !important;" 
+                                value="Pendientes" 
+                                url="imagenprueba.xhtml" 
+                                icon="ui-icon-clock"
+                                target="central"/>
+                            <p:menuitem 
+                                style="color: rgb(109, 26, 66) !important; 
+                                       font-weight: bold !important; 
+                                       font-size: 20px !important;
+                                       margin-left: 40px !important;" 
+                                value="Papelera" 
+                                url="Papelera.xhtml"
+                                icon="ui-icon-trash"
+                                target="central"/>
+                        </p:menu>              
+                    </pe:layoutPane>
+                    
+                    <pe:layoutPane position="center"
+                                     maskContents="true"
+                                     resizable="false">  
+                        <iframe id="central"
+                                name="central"
+                                width="100%"  
+                                height="100%"
+                                frameborder="0">  
+                        </iframe>  
+                    </pe:layoutPane>
+                </pe:layout>                 
+            </h:form>
+            
+
+        </h:body>
+
+    </f:view>
+</html>
+

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Categorías</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h3> Categorias del Sistema </h3>
+            <p:commandButton value="Nueva Categoría" action="nuevaCategoria"/>
+    
+        <p:separator/>
+        <h:form>
+            <p:dataTable value="#{consultarCategoriaController.categorias}" var="categoria" 
+                         paginator="true" rows="5"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15" currentPageReportTemplate="Página: ({currentPage} de {totalPages})"
+                         paginatorPosition="bottom">
+                
+              <p:column headerText="Id" filterBy="#{categoria.idCategoria}" filterMatchMode="contains">
+                  <h:outputText value="#{categoria.idCategoria}"/>
+            </p:column>
+            
+              <p:column headerText="Nombre" filterBy="#{categoria.nombre}" filterMatchMode="contains">
+                  <h:outputText value="#{categoria.nombre}"/>
+            </p:column>
+            
+            <p:column headerText="Estado" filterBy="#{categoria.estado}" filterMatchMode="contains">
+                <h:outputText value="#{categoria.estado}"/>
+            </p:column>
+                         
+         </p:dataTable>
+        </h:form>     
+    </h:body>
+</html>

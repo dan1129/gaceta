@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Usuarios</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h3> Usuarios del Sistema </h3>
+            <p:commandButton value="Nuevo Usuario" action="nuevoUsuario.xhtml"/>
+    
+        <p:separator/>
+        <h:form>
+            <p:dataTable value="#{consultarUsuariosController.usuarios}" var="usuario" 
+                         paginator="true" rows="5"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15" currentPageReportTemplate="Página: ({currentPage} de {totalPages})"
+                         paginatorPosition="bottom">
+              <p:column headerText="Id" filterBy="#{usuario.idUsuario}" filterMatchMode="contains">
+                <h:outputText value="#{usuario.idUsuario}"/>
+              </p:column>
+            
+              <p:column headerText="Usuario" filterBy="#{usuario.usuario}" filterMatchMode="contains">
+                <h:outputText value="#{usuario.usuario}"/>
+              </p:column>
+            
+              <p:column headerText="Nombre" filterBy="#{usuario.nombre} #{usuario.apellidoP} #{usuario.apellidoM}" filterMatchMode="contains">
+                <h:outputText value="#{usuario.nombre} #{usuario.apellidoP} #{usuario.apellidoM}"/>
+              </p:column>
+            
+              <p:column headerText="Correo" filterBy="#{usuario.email}" filterMatchMode="contains">
+                <h:outputText value="#{usuario.email}"/>
+              </p:column>
+              
+             <p:column headerText="Ver" >
+                 <h:commandLink action="verUsuario" actionListener="#{consultarUsuariosController.mostrar(usuario)}" >
+                     <h:graphicImage  library="icons" name="ver-icono_1.png"/>
+                 </h:commandLink>
+                 <h:commandLink value="modificar" actionListener="#{usuarioController.modificar()}" >
+                     
+                 </h:commandLink>
+                     
+                     
+
+                 
+            </p:column> 
+         </p:dataTable>
+        </h:form>     
+    </h:body>
+</html>

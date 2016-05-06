@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="redaccion">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Redacción</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="center">
+                                                             
+                        <h:panelGrid style="padding-left: 80px !important; 
+                                             padding-top: 5px !important" >
+                            <h:form enctype="multipart/form-data"> 
+                            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                            
+                            <p:inputText
+                                placeholder="Título"
+                                value ="#{editarGuardadoController.borrador.titulo}"
+                                size="90" 
+                                id="titulo"
+                                required="true"
+                                />
+                            <p:inputText 
+                                style="margin-top: 10px !important"
+                                placeholder="Subtítulo"
+                                value ="#{editarGuardadoController.borrador.subtitulo}"
+                                size="90" 
+                                id="subtitulo"
+                                required="true"
+                                /> 
+                            <p:editor 
+                                style="width: 925px !important;
+                                       margin-top: 10px !important;
+                                       margin-bottom: 10px !important;" 
+                                value ="#{editarGuardadoController.borrador.contenido}"
+                                id="contenido"
+                                required="true"
+                                />
+                            <p:inputText 
+                                style="margin-top: 10px !important"
+                                placeholder="Descripción de imagen"
+                                value ="#{editarGuardadoController.borrador.descripcion_img}"
+                                size="90" 
+                                id="descImg"
+                                required="true"
+                                />
+                            <p:inputText 
+                                style="margin-top: 10px !important"
+                                placeholder="Breve Descripción"
+                                value ="#{editarGuardadoController.borrador.breve_descripcion}"
+                                size="90" 
+                                id="BreveDesc"
+                                required="true"
+                                />
+                            
+                                     
+                            <h:panelGrid columns="2" style="margin-top: 10px !important;">
+                                <p:calendar
+                                      placeholder="Fecha"
+                                      value ="#{editarGuardadoController.borrador.fecha}"
+                                      id="fecha"
+                                      required="true"
+                                      />
+                                
+                                <p:fileUpload mode="simple"
+                                               label="Seleccionar"
+                                               value="#{editarGuardadoController.borrador.imagen}"
+                                               disabled="false"/>
+                                
+                                
+                            </h:panelGrid>
+                            
+                             <p:separator/>
+                            
+                           
+                            <p:outputLabel value="¿Que desea hacer?" style="margin-left: 700px !important;
+                                                                            "/>
+                            
+                            <h:panelGrid columns="2" style="margin-left: 600px !important;" cellpadding="8">
+                                <p:selectOneMenu id="Opcion" value="#{borradorController.borrador.status}">
+                                    <f:selectItem itemLabel="Enviar a revisión" itemValue="E" />
+                                    <f:selectItem itemLabel="Guardar" itemValue="G"/>
+                                </p:selectOneMenu>
+                            
+                                <p:commandButton 
+                                        value="Continuar" 
+                                        style="color:white !important; 
+                                               background-color: rgb(109, 26, 66) !important;"                                       
+                                                                               
+                                        actionListener="#{borradorController.mandar()}"/>
+                            </h:panelGrid>
+                   
+                           
+                          </h:form>  
+                        </h:panelGrid>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
+

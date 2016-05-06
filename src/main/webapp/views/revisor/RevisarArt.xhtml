@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Revisar Articulos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <p:separator/>
+        <h:form>
+            <p:dataTable value="#{consultarBorradoresController.borradores}" var="borrador" style="width: 800px !important;
+                                                                                                    margin-left: 120px !important">
+             <p:column headerText="Guardados" >
+                 <h:commandLink actionListener="#{consultarBorradoresController.mostrar(borrador)}" action="Editar">
+                     <h:graphicImage value="/icons/articulo.png"
+                                       style="height: 20px !important"/>
+                     <h:outputText value="#{borrador.titulo}"/>
+                 </h:commandLink>
+            </p:column> 
+                
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{borrador.fecha}"/>
+                </p:column>
+         </p:dataTable>
+        </h:form>     
+    </h:body>
+</html>
+

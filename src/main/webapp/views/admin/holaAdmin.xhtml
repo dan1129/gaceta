@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            
+                 <h1>!Hola #{indexController.usuarioLogeado()}! </h1> 
+                 <h3>Esto es lo nuevo en artículos: </h3> 
+                        <p:dataGrid  var="user" value="#{consultarUsuariosController.usuarios}"
+                                  columns="4" 
+                                  >
+
+                         <p:panel header="#{user.nombre} #{user.apellidoP}"
+                                  style="text-align:center">
+                              <h:panelGrid columns="1">
+                                 <h:outputText value="#{user.idUsuario} : #{user.rol}"/>
+                              </h:panelGrid>
+                         </p:panel>
+
+                     </p:dataGrid>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Alta de Usuario</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+         <h:form id="crearUsuario">
+            <p:messages id="mensaje"  autoUpdate="false" severity="info, fatal" showSummary="false" showDetail="true"/>
+            
+            <p:fieldset legend="Datos Personales">
+               <h:panelGrid columns="3" id="pgDatos"> 
+                  <p:outputLabel for="txtNombre" value="Nombre" />
+                  <p:inputText id="txtNombre" value="#{usuarioController.usuario.nombre}" required="true" requiredMessage="Campo requerido"/>
+                  <p:message for="txtNombre"/>
+                   
+                  <p:outputLabel for="txtApellidoPaterno" value="Apellido Paterno"/> nbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                  <p:inputText id="txtApellidoPaterno" value="#{usuarioController.usuario.apellidoP}" required="true" requiredMessage="Campo requerido"/>
+                  <p:message for="txtApellidoPaterno"/>    
+                   
+                  <p:outputLabel for="txtApellidoMaterno" value="Apellido Materno"/>
+                  <p:inputText id="txtApellidoMaterno" value="#{usuarioController.usuario.apellidoM}" required="true" requiredMessage="Campo requerido" />
+                  <p:message for="txtApellidoMaterno"/>   
+                  
+                  <p:outputLabel for="txtEmail" value="Email"/>
+                  <p:inputText id="txtEmail" value="#{usuarioController.usuario.email}" required="true" requiredMessage="Campo requerido" />
+                  <p:message for="txtEmail"/>
+                  
+                <p:outputLabel for="rdbSexo" value="Sexo"/>
+                <p:selectOneRadio id="rdbSexo" value="#{usuarioController.usuario.sexo}" required="true" requiredMessage="Campo requerido">
+                     <f:selectItem itemValue="M" itemLabel="Masculino"/>
+                     <f:selectItem itemValue="F" itemLabel="Femenino"/>
+                  </p:selectOneRadio>
+                  <p:message for="rdbSexo"/>  
+              </h:panelGrid> 
+            </p:fieldset>  
+            
+            <p:fieldset legend="Datos de la Sesión">
+                <h:panelGrid columns="3" id="pgCuenta">
+                    
+                    <p:outputLabel for="txtUsuario" value="Usuario"/>
+                    <p:inputText id="txtUsuario" value="#{usuarioController.usuario.usuario}" required="true" requiredMessage="Campo requerido"/>
+                    <p:message for="txtUsuario"/>
+                    
+                    <p:outputLabel for="cboRol" value="Tipo de Usuario"/>
+                    <p:selectOneMenu id="cboRol" value="#{usuarioController.usuario.rol}" required="true" requiredMessage="Campo requerido">
+                         <f:selectItem itemValue="A" itemLabel="Administrador"/>
+                         <f:selectItem itemValue="E" itemLabel="Editor"/>
+                         <f:selectItem itemValue="R" itemLabel="Revisor"/>
+                    </p:selectOneMenu>
+                    <p:message for="cboRol"/>
+                    
+                    <p:outputLabel for="password1" value="Contraseña"/>
+                    <p:password id="password1" value="#{usuarioController.usuario.password}" requiredMessage="Campo requerido"
+                                validatorMessage="Las claves no coinciden" weakLabel="Débil" strongLabel="Fuerte" goodLabel="Bueno"
+                                match="password1" feedback="true" promptLabel="Ingresa una clave" required="true"/>
+                    <p:message for="password1"/>
+                    
+                    <p:outputLabel for="password2" value="Repetir Contraseña"/>
+                    <p:password id="password2" required="true" requiredMessage="Campo requerido"/>  
+                    <p:message for="password2"/>
+                 </h:panelGrid>
+            </p:fieldset>
+            <h:panelGrid columns="3">
+                <p:commandButton icon="ui-icon-check" value="Registrar" update="pgDatos, pgCuenta, mensaje" actionListener="#{usuarioController.registrar()}" ajax="false" oncomplete="limpiarForm()"/>
+                <p:commandButton value="Volver a Usuarios" action="/buscarUsuario.xhtml" />
+            </h:panelGrid>
+        </h:form>   
+        
+        
+    </h:body>
+</html>
